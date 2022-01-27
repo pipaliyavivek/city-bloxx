@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using DG.Tweening;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -39,13 +40,12 @@ public class GameplayController : MonoBehaviour
             currentBox.DropBox();
         }
     }
-
     public void SpawnNewBox()
     {
         //Invoke function after 2 seconds
         //Invoke("NewBox", 1.0f);
         StartCoroutine(NewBox());
-    }
+    } 
     IEnumerator NewBox()
     {
         yield return new WaitForSeconds(.4f);
@@ -54,18 +54,23 @@ public class GameplayController : MonoBehaviour
     }
     public void moveCamera()
     {
-        moveCount++;
-        //move camera after stacking 5 boxes
-        if(moveCount == 5)
+      /*  Camera.main.fieldOfView -= 2f;
+        DOVirtual.DelayedCall(.2f, () => 
         {
-            moveCount = 0;
-            cameraScript.targetPos.y += 2f;
-        }
+            Camera.main.fieldOfView += 2f;
+        });   */ 
+            // moveCount++;
+       // //move camera after stacking 5 boxes
+       // if(moveCount == 3)
+       // {
+       //     moveCount = 0;
+       //     cameraScript.targetPos.y += 2f;
+       // }
     }
     public void Restart()
     {
         // Reload the scene
         UnityEngine.SceneManagement.SceneManager.LoadScene(
-            UnityEngine.SceneManagement.SceneManager.GetActiveScene().name );
+            UnityEngine.SceneManagement.SceneManager.GetActiveScene().name);
     }
 }

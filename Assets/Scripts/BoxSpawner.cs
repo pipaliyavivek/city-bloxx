@@ -10,11 +10,11 @@ public class BoxSpawner : MonoBehaviour
     public void SpawnBox()
     {
         GameObject box_Obj = Instantiate(box_Prefab);
-        floor_Rigid =  box_Obj.GetComponent<Rigidbody2D>();
+        floor_Rigid = box_Obj.GetComponent<Rigidbody2D>();
         Vector3 temp = transform.position;
         //To adjust z to keep at 0f
         temp.z = 0f;
         box_Obj.transform.position = temp;
-        
     }
+    
 }

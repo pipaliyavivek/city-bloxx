@@ -86,12 +86,12 @@ public class BoxScript : MonoBehaviour
             //return;
             yield break;
         }
-
         ignoreCollision = true;
         ignoreTrigger = true;
-
         GameplayController.instance.SpawnNewBox();
         GameplayController.instance.moveCamera();
+        myBody.gravityScale = 5;
+        myBody.mass = 500;
     }
     private void OnCollisionEnter2D(Collision2D target)
     {
@@ -109,6 +109,7 @@ public class BoxScript : MonoBehaviour
         {
             //Invoke("Landed", 2.0f);
             StartCoroutine(Landed(.2f));
+            Debug.Log("Box Landed");
             ignoreCollision = true;
         }
     }
